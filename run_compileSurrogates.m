@@ -4,7 +4,7 @@ basePath = '/Users/mattgaidica/Documents/MATLAB/WatsonLFPs/CRCNS/fcx-1/data';
 % 1)pick random time point 2)test for known state 3)include/exclude->save
 
 nSurr = 100;
-timeWindow = 120; % seconds
+timeWindow = 10; % seconds
 ratioThresh = 0.5;
 % TT = readtable("transitionTable.txt");
 load('TTransition');
@@ -122,7 +122,7 @@ for ii = 1:length(files)
         subject(tableRow,1) = string(files(ii).name);
         motion_data(tableRow,1) = {double(motiondata.motion)};
         % fixed at 60s
-        filt_data(tableRow,1) = {double(sqrt((motiondata.motion - movmean(motiondata.motion,60)).^2))};
+        filt_data(tableRow,1) = {double( abs(motiondata.motion - medfilt1(motiondata.motion,60)) )};
         segment_range{tableRow,1} = this_range;
         segment_class{tableRow,1} = this_class;
         sleep_class{tableRow,1} = this_sleep_class;

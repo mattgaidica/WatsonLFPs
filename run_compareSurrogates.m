@@ -176,6 +176,7 @@ xtickangle(60);
 p = get(gca,"Position");
 set(gca,'Position',[p(1) p(2)+0.14 p(3) p(4)-0.28]);
 set(gca,'FontSize',14);
+ylim([0 0.7]);
 
 
 subplot(rows,cols,4);
@@ -189,7 +190,7 @@ bar(1:numel(sumArray),sumArray./sum(sumArray),'FaceColor', 'flat', 'CData', colo
 xticklabels(allActual_labels);
 ylabel('Fraction of Episodes');
 title('Actual');
-ylim([0 0.5]);
+ylim([0 0.7]);
 xtickangle(60);
 p = get(gca,"Position");
 set(gca,'Position',[p(1) p(2)+0.14 p(3) p(4)-0.28]);
